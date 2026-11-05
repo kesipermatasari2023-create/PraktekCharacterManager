@@ -1,21 +1,21 @@
 
 package com.unpri.charactermanager;
 
-import javax.swing.SwingUtilities;
-
 import com.unpri.charactermanager.model.Character;
 import com.unpri.charactermanager.model.CharacterManager;
 import com.unpri.charactermanager.model.CharacterType;
 import com.unpri.charactermanager.view.MainWindow;
 
+import javax.swing.SwingUtilities;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        // Membuat CharacterManager
         CharacterManager manager = new CharacterManager();
 
-        // Data karakter
+        // 8 karakter dengan variasi level dan role
+
         manager.addCharacter(
                 new Character("Alucard", 10, CharacterType.WARRIOR)
         );
@@ -29,7 +29,7 @@ public class Main {
         );
 
         manager.addCharacter(
-                new Character("Layla", 3, CharacterType.ARCHER)
+                new Character("Layla", 6, CharacterType.ARCHER)
         );
 
         manager.addCharacter(
@@ -41,10 +41,14 @@ public class Main {
         );
 
         manager.addCharacter(
-                new Character("Tigreal", 4, CharacterType.WARRIOR)
+                new Character("Tigreal", 11, CharacterType.WARRIOR)
         );
 
-        // Menjalankan GUI pada Event Dispatch Thread
+        manager.addCharacter(
+                new Character("Estes", 9, CharacterType.HEALER)
+        );
+
+        // Menampilkan GUI menggunakan Event Dispatch Thread
         SwingUtilities.invokeLater(() -> {
 
             MainWindow window = new MainWindow(manager);
