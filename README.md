@@ -530,3 +530,79 @@ Selain implementasi program, tugas ini juga memberikan
 pemahaman mengenai konsep MVC, pemisahan tanggung jawab antara
 Model dan View, serta pentingnya Layout Manager dalam
 pengembangan aplikasi desktop.
+
+
+
+# TP14 – Character Manager Sprint #6
+## Form Input, Validasi & Analisis MVC
+
+### A. Deskripsi
+Pada TP14 ini, aplikasi Character Manager dikembangkan dengan menambahkan fitur form input karakter, validasi data, dan penerapan validasi pada Model dan View.
+
+Aplikasi dibuat menggunakan Java Swing dengan konsep Model-View-Controller (MVC).
+
+### B. Fitur yang Ditambahkan
+1. Form input nama karakter menggunakan JTextField.
+2. Pemilihan role menggunakan JComboBox.
+3. Pengaturan level menggunakan JSpinner dengan rentang 1–99.
+4. Validasi nama karakter agar tidak kosong.
+5. Validasi panjang nama maksimal 20 karakter.
+6. Validasi format nama karakter.
+7. Validasi agar tidak ada spasi berurutan.
+8. Validasi nama karakter agar tidak duplikat.
+9. Validasi role dan level pada Model.
+10. Karakter baru ditampilkan pada daftar setelah berhasil ditambahkan.
+
+### C. Validasi Input
+Validasi dilakukan pada dua bagian:
+
+**View:**
+- Nama tidak boleh kosong.
+- Nama maksimal 20 karakter.
+- Nama tidak boleh mengandung format yang tidak sesuai.
+- Nama tidak boleh memiliki spasi berurutan.
+- Nama tidak boleh sama dengan karakter yang sudah terdaftar.
+
+**Model:**
+- Nama tidak boleh kosong.
+- Role tidak boleh null.
+- Level harus berada di antara 1 sampai 99.
+- Karakter dengan role MAGE tidak boleh memiliki level lebih dari 60.
+
+### D. Screenshot Program
+
+**1. Validasi Nama Kosong**
+
+![Validasi Nama Kosong](![alt text](image-11.png))
+
+**2. Validasi Nama Duplikat**
+
+![Validasi Nama Duplikat](![alt text](image-12.png))
+
+**3. Karakter Berhasil Ditambahkan**
+
+![Karakter Berhasil Ditambahkan](![alt text](image-13.png))
+
+### E. Tabel Pengujian
+
+| No | Input | Hasil yang Diharapkan | Hasil Aktual |
+|----|-------|------------------------|--------------|
+| 1 | Nama kosong | Muncul pesan nama wajib diisi | Sesuai |
+| 2 | Nama duplikat | Muncul pesan nama sudah digunakan | Sesuai |
+| 3 | Nama lebih dari 20 karakter | Muncul pesan batas panjang nama | Sesuai |
+| 4 | Nama dengan spasi berurutan | Muncul pesan format nama salah | Sesuai |
+| 5 | Nama valid | Karakter berhasil ditambahkan | Sesuai |
+| 6 | Level kurang dari 1 | Model menolak data | Sesuai |
+| 7 | Level lebih dari 99 | Model menolak data | Sesuai |
+| 8 | MAGE dengan level lebih dari 60 | Model menolak data | Sesuai |
+
+### F. Kompromi Sementara
+Pada pengembangan ini, ActionListener masih digunakan secara langsung di dalam CharacterFormPanel agar proses input lebih sederhana. Selain itu, form masih memanggil CharacterManager secara langsung tanpa melalui Controller. Pendekatan ini digunakan untuk memenuhi kebutuhan implementasi saat ini. Pada pengembangan berikutnya, pemisahan Controller akan dilakukan agar struktur MVC menjadi lebih baik.
+
+### G. Analisis Google Docs
+Analisis konseptual mengenai pemilihan komponen Swing, validasi input, validasi Model dan View, penanganan error, serta penerapan MVC dapat dilihat melalui Google Docs berikut:
+
+Link Google Docs: (https://docs.google.com/document/d/16uJnhuDqtK8d9-SiGXw_58S25Y7XpJQlMpbpv1B3RrI/edit?usp=sharing)
+
+### H. Kesimpulan
+Melalui TP14 ini, aplikasi Character Manager telah memiliki fitur form input dan validasi data. Validasi diterapkan pada View dan Model agar data yang dimasukkan sesuai dengan aturan program. Dengan demikian, aplikasi menjadi lebih terstruktur dan mengurangi kemungkinan kesalahan input.

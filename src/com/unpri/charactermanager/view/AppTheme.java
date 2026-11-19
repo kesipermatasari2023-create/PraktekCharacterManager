@@ -1,91 +1,80 @@
 
 package com.unpri.charactermanager.view;
 
-import com.unpri.charactermanager.model.CharacterType;
-
-import javax.swing.BorderFactory;
-import javax.swing.border.Border;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 public class AppTheme {
 
-    // COLORS
     public static final Color BACKGROUND =
-            new Color(25, 29, 45);
+        new Color(245, 247, 250);
 
     public static final Color SURFACE =
-            new Color(39, 45, 65);
+        Color.WHITE;
 
     public static final Color TEXT =
-            new Color(245, 245, 245);
+        new Color(35, 45, 60);
 
     public static final Color MUTED_TEXT =
-            new Color(170, 180, 195);
+        new Color(120, 130, 145);
 
     public static final Color GOLD =
-            new Color(255, 195, 75);
+        new Color(230, 170, 50);
 
     public static final Color ACCENT =
-            new Color(80, 150, 220);
+        new Color(55, 110, 200);
 
-    // ROLE COLORS
-    public static final Color WARRIOR =
-            new Color(130, 65, 65);
+    public static final Color ERROR =
+        new Color(210, 55, 55);
 
-    public static final Color MAGE =
-            new Color(85, 70, 145);
-
-    public static final Color ARCHER =
-            new Color(55, 120, 85);
-
-    public static final Color ASSASSIN =
-            new Color(115, 75, 125);
-
-    public static final Color HEALER =
-            new Color(55, 115, 130);
-
-    // FONTS
     public static final Font TITLE_FONT =
-            new Font("SansSerif", Font.BOLD, 25);
+        new Font("SansSerif", Font.BOLD, 24);
 
     public static final Font SECTION_FONT =
-            new Font("SansSerif", Font.BOLD, 16);
+        new Font("SansSerif", Font.BOLD, 16);
 
     public static final Font BODY_FONT =
-            new Font("SansSerif", Font.PLAIN, 14);
+        new Font("SansSerif", Font.PLAIN, 14);
 
     public static final Font SMALL_FONT =
-            new Font("SansSerif", Font.PLAIN, 12);
+        new Font("SansSerif", Font.PLAIN, 12);
 
-    // BORDER
-    public static final Border PANEL_BORDER =
+    public static final Border CARD_BORDER =
+        BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(
-                    new Color(75, 85, 110), 1
-            );
+                new Color(220, 225, 235)
+            ),
+            BorderFactory.createEmptyBorder(12, 12, 12, 12)
+        );
 
-    // COLOR BASED ON CHARACTER ROLE
-    public static Color colorFor(CharacterType type) {
+    public static Color colorFor(
+        com.unpri.charactermanager.model.CharacterType type
+    ) {
+
+        if (type == null) {
+            return MUTED_TEXT;
+        }
 
         switch (type) {
-
             case WARRIOR:
-                return WARRIOR;
-
-            case MAGE:
-                return MAGE;
+                return new Color(220, 90, 80);
 
             case ARCHER:
-                return ARCHER;
+                return new Color(60, 160, 110);
 
             case ASSASSIN:
-                return ASSASSIN;
+                return new Color(140, 90, 190);
 
-            case HEALER:
-                return HEALER;
+            case MAGE:
+                return new Color(65, 125, 210);
 
             default:
-                return SURFACE;
+                return MUTED_TEXT;
         }
+    }
+
+    private AppTheme() {
     }
 }

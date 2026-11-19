@@ -1,43 +1,65 @@
+
 package com.unpri.charactermanager.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterManager {
 
-    private ArrayList<Character> characters;
+    private final List<Character> characters = new ArrayList<>();
 
-    public CharacterManager() {
-        characters = new ArrayList<>();
-    }
-
-    // Menambahkan karakter
     public void addCharacter(Character character) {
+
+        if (character == null) {
+            throw new IllegalArgumentException(
+                "Karakter tidak boleh null."
+            );
+        }
+
+        if (isNameTaken(character.getName())) {
+            throw new IllegalArgumentException(
+                "Nama karakter sudah digunakan."
+            );
+        }
+
         characters.add(character);
     }
 
-    // Mengambil seluruh data karakter
-    public ArrayList<Character> getAllCharacters() {
-        return characters;
+    public boolean isNameTaken(String name) {
+
+        if (name == null) {
+            return false;
+        }
+
+        for (Character character : characters) {
+            if (character.getName().equalsIgnoreCase(name.trim())) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
-    // Mengambil jumlah karakter
-    public int getTotalCharacters() {
+    public List<Character> getCharacters() {
+        return new ArrayList<>(characters);
+    }
+
+    public int getCharacterCount() {
         return characters.size();
     }
 
-    // Menghitung rata-rata level
     public double getAverageLevel() {
 
         if (characters.isEmpty()) {
             return 0;
         }
 
-        int totalLevel = 0;
+        int total = 0;
 
         for (Character character : characters) {
-            totalLevel += character.getLevel();
+            total += character.getLevel();
         }
 
-        return (double) totalLevel / characters.size();
+        return (double) total / characters.size();
     }
 }
